@@ -6,7 +6,7 @@ using DAWProject;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Lab1.Controllers
+namespace DAWProject.Controllers
 {
     [ApiController]
     [Route("[controller]")]
