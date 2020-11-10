@@ -1,6 +1,6 @@
 ﻿using DAWProject.Models;
 using System.Threading.Tasks;
-using WhiteHat.DAL.Repositories.GenericRepository;
+using DAWProject.Repositories.GenericRepository;
 
 namespace DAWProject.Repositories.AccessoryRepository
 {

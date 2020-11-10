@@ -8,6 +8,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using DAWProject.Repositories.DatabaseRepository;
 using DAWProject.Services.DemoService;
+using DAWProject.Helpers;
+using DAWProject.Services.UserServices;
 
 namespace DAWProject
 {
@@ -30,6 +32,10 @@ namespace DAWProject
                 configuration.RootPath = "ClientApp/dist";
             });
             services.AddDbContext<Data.DawAppContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.AddScoped<IUserService, UserService>();
 
             // Repositories
 
@@ -65,6 +71,8 @@ namespace DAWProject
             }
 
             app.UseRouting();
+            app.UseMiddleware<JWTMiddleware>();
+
 
             app.UseEndpoints(endpoints =>
             {

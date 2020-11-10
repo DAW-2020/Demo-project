@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Lab3454.Services.DemoService;
+using DAWProject.Services.DemoService;
 
-namespace Lab3454.Controllers
+namespace DAWProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

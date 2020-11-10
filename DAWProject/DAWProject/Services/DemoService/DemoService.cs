@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Lab3454.Repository.DatabaseRepository;
-using Lab3454.Models;
+using DAWProject.Repositories.DatabaseRepository;
+using DAWProject.Models;
 
-namespace Lab3454.Services.DemoService
+namespace DAWProject.Services.DemoService
 {
     public class DemoService : IDemoService
     {
