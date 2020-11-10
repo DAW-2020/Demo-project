@@ -13,8 +13,8 @@ namespace DAWProject.Data
 
 
         // One to Many
-        public DbSet<Model1> Models1 { get; set; }
-        public DbSet<Model2> Models2 { get; set; }
+        public DbSet<Models.Relations.One_to_Many.Model1> Models1 { get; set; }
+        public DbSet<Models.Relations.One_to_Many.Model2> Models2 { get; set; }
 
 
         // One to One
@@ -27,6 +27,9 @@ namespace DAWProject.Data
         public DbSet<ModelsRelation> ModelsRelations { get; set; }
 
 
+        public DbSet<Models.Model1> SimpleModels1 { get; set; }
+        public DbSet<Models.Model2> SimpleModels2 { get; set; }
+
         public DawAppContext(DbContextOptions<DawAppContext> options) : base(options)
         {
 
@@ -36,7 +39,7 @@ namespace DAWProject.Data
         {
             // One to Many
 
-            builder.Entity<Model1>()
+            builder.Entity<Models.Relations.One_to_Many.Model1>()
                 .HasMany(x => x.Models2)
                 .WithOne(y => y.Model1);
             // To prevent optional relation
@@ -68,6 +71,11 @@ namespace DAWProject.Data
                 .HasOne<Model4>(x => x.Model4)
                 .WithMany(y => y.ModelRelations)
                 .HasForeignKey(z => z.Model4Id);
+
+
+            builder.Entity<Models.Model1>()
+           .HasMany(x => x.Models2)
+           .WithOne(x => x.Model1);
 
             base.OnModelCreating(builder);
         }

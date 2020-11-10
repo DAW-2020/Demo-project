@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+using DAWProject.Repositories.DatabaseRepository;
+using DAWProject.Services.DemoService;
 
 namespace DAWProject
 {
@@ -28,6 +30,16 @@ namespace DAWProject
                 configuration.RootPath = "ClientApp/dist";
             });
             services.AddDbContext<Data.DawAppContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            // Repositories
+
+            // Created each time they are requested 
+            services.AddTransient<IDatabaseRepository, DatabaseRepository>();
+            // They are created on the first request
+            // services.AddSingleton
+            // Created once per client request
+            // services.AddScoped
+            services.AddTransient<IDemoService, DemoService>();
 
         }
 
